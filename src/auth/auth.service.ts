@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { RegisterDto } from './dto/register.dto';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class AuthService {
+  constructor(private readonly userService: UserService) {}
   register(registerDto: RegisterDto) {
     /**
      * 1. Check user already exists
@@ -11,6 +13,8 @@ export class AuthService {
      * 4. Generate JWT token
      * 5. Return the token
      */
-    return { message: 'registered' };
+    // calling userService form userModule
+    const user = this.userService.getUserByEmail(registerDto.email);
+    return user;
   }
 }
