@@ -1,12 +1,13 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { ConflictException, Injectable, Logger } from '@nestjs/common';
 import { RegisterDto } from './dto/register.dto';
 import { UserService } from 'src/user/user.service';
 import bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { jwtConstants } from './constants';
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
+
   constructor(
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
@@ -32,6 +33,8 @@ export class AuthService {
       ...registerDto,
       password: hashedPassword,
     });
+
+    this.logger.log(`New User has Been Created: ${newUser.id}`);
 
     // JWT token creation
     const payload = { sub: newUser.name, email: newUser.email };
