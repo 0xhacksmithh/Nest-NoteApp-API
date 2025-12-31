@@ -5,7 +5,7 @@ import { UserService } from 'src/user/user.service';
 @Injectable()
 export class AuthService {
   constructor(private readonly userService: UserService) {}
-  register(registerDto: RegisterDto) {
+  async register(registerDto: RegisterDto) {
     /**
      * 1. Check user already exists
      * 2. Hash password
@@ -14,7 +14,7 @@ export class AuthService {
      * 5. Return the token
      */
     // calling userService form userModule
-    const user = this.userService.getUserByEmail(registerDto.email);
+    const user = await this.userService.getUserByEmail(registerDto.email);
     return user;
   }
 }
