@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { RegisterDto } from './dto/register.dto';
 import { UserService } from 'src/user/user.service';
+import bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -15,6 +16,18 @@ export class AuthService {
      */
     // calling userService form userModule
     const user = await this.userService.getUserByEmail(registerDto.email);
-    return user;
+    if (user) {
+      throw new ConflictException('Email already taken..');
+    }
+    // Hashing Password
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(registerDto.password, saltRounds);
+    // Create User in UserServie
+    const newUser = await this.userService.createUser({
+      ...registerDto,
+      password: hashedPassword,
+    });
+
+    return newUser;
   }
 }
