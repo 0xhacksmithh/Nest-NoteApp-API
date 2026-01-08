@@ -37,10 +37,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpb
 ### Get All Notes
 GET http://localhost:4000/api/note
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODUzNzUzLCJleHAiOjE3Njc4NTQzNTN9.ja5ZO63VE85cfG8x3nZm7Mrpr2EWC0MNndD2uwPrl-s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODU2NzY2LCJleHAiOjE3Njc4NTczNjZ9.iic-fbLmkCLATJRqEFo3ehQjsDagFuPt_C3CEM3doiU
 
 
 ### Get All Notes with pagination
-GET http://localhost:4000/api/note?skip=0&take=10
+GET http://localhost:4000/api/note?skip=0&take=0
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODU0ODM2LCJleHAiOjE3Njc4NTU0MzZ9.bnomtD574CmlBeWe6VwC3oaEUtcoRKeVFrQIY5_yTRU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODU2NzY2LCJleHAiOjE3Njc4NTczNjZ9.iic-fbLmkCLATJRqEFo3ehQjsDagFuPt_C3CEM3doiU
+
+
+
+### Get A Single Note 
+GET http://localhost:4000/api/note/10
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODU2NzY2LCJleHAiOjE3Njc4NTczNjZ9.iic-fbLmkCLATJRqEFo3ehQjsDagFuPt_C3CEM3doiU
+
