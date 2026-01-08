@@ -22,8 +22,18 @@ export class NoteService {
     return note;
   }
 
-  findAll() {
-    return `This action returns all note`;
+  async findAll(
+    { take, skip }: { take: number; skip: number },
+    userId: number,
+  ) {
+    const notes = await this.prismaService.note.findMany({
+      skip,
+      take,
+      where: {
+        userId,
+      },
+    });
+    return notes;
   }
 
   findOne(id: number) {

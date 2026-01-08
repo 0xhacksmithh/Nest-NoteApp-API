@@ -26,9 +26,21 @@ Content-Type: application/json
 ### Create Note
 POST http://localhost:4000/api/note
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6Imxlb29vb3NhdGh5YWFhYUBnbWFpbC5jb20iLCJpYXQiOjE3NjcxODQ4MzMsImV4cCI6MTc2NzE4NTQzM30.tsM8pDSO62bwnPha_6M7RGB570TNBws80hrayngnBHM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODUzMzUyLCJleHAiOjE3Njc4NTM5NTJ9.XFKOEV992_Vv8n3EkRSlbnMPHfBIdVuKeMhkvSDHkcs
 
 {
-    "title": "Note 1",
-    "body": "This is note 1"
+    "title": "Hati Note 1",
+    "body": "This is Hatiii's Note"
 }
+
+
+### Get All Notes
+GET http://localhost:4000/api/note
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODUzNzUzLCJleHAiOjE3Njc4NTQzNTN9.ja5ZO63VE85cfG8x3nZm7Mrpr2EWC0MNndD2uwPrl-s
+
+
+### Get All Notes with pagination
+GET http://localhost:4000/api/note?skip=0&take=10
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODU0ODM2LCJleHAiOjE3Njc4NTU0MzZ9.bnomtD574CmlBeWe6VwC3oaEUtcoRKeVFrQIY5_yTRU

@@ -8,6 +8,8 @@ import {
   Delete,
   UseGuards,
   Request,
+  Query,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { NoteService } from './note.service';
 import { CreateNoteDto } from './dto/create-note.dto';
@@ -27,21 +29,32 @@ export class NoteController {
     return this.noteService.create(createNoteDto, req.user.sub);
   }
 
+  @UseGuards(AuthGuard)
   @Get()
-  findAll() {
-    return this.noteService.findAll();
+  findAll(
+    @Request() req: { user: { sub: number } },
+    @Query('take', new ParseIntPipe({ optional: true })) take?: number, // below 2 for pagination
+    @Query('skip', new ParseIntPipe({ optional: true })) skip?: number,
+  ) {
+    return this.noteService.findAll(
+      { take: take || 5, skip: skip || 0 },
+      req.user.sub,
+    );
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.noteService.findOne(+id);
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateNoteDto: UpdateNoteDto) {
     return this.noteService.update(+id, updateNoteDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.noteService.remove(+id);
