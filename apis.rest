@@ -1,8 +1,8 @@
-###
+### Home 
 GET http://localhost:4000
 
 
-###
+### Register User
 POST http://localhost:4000/api/register
 Content-Type: application/json
 
@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 
-###
+### Login User
 POST http://localhost:4000/api/login
 Content-Type: application/json
 
@@ -50,15 +50,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpb
 ### Get A Single Note 
 GET http://localhost:4000/api/note/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODU5MDYzLCJleHAiOjE3Njc4NTk2NjN9.9VgQn9c2OS8PYPow6HX0I7ZYQ3lwPF2alEgFra7mNcU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODYwMTc3LCJleHAiOjE3Njc4NjA3Nzd9.ZSILqAP3IIybyNZM3PYm3DWdM_El8pIHF-hLFla6Bqc
 
 
 
 ### Update A Note
-PATCH http://localhost:4000/api/note/10
+PATCH http://localhost:4000/api/note/3
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODU5MDYzLCJleHAiOjE3Njc4NTk2NjN9.9VgQn9c2OS8PYPow6HX0I7ZYQ3lwPF2alEgFra7mNcU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODYwNDQ0LCJleHAiOjE3Njc4NjEwNDR9.kmS-tlPChGaFJ4LvRbyt8WGkwzDDqUXDbMr8bl7CRcg
 
 {
     "title": "This is Hatiii's again Updated Post No. 4"
 }
+
+
+### Delete A Note
+DELETE http://localhost:4000/api/note/8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJlbWFpbCI6ImhhdGlAZ21haWwuY29tIiwiaWF0IjoxNzY3ODYwNzcwLCJleHAiOjE3Njc4NjEzNzB9.1b0jGeKpELBn_bsgnWsbq3rZrhZ5QEuluelWoMejKJQ

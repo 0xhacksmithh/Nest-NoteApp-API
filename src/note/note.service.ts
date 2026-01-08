@@ -7,6 +7,7 @@ import {
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
 import { PrismaService } from 'src/prisma.service';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
 
 @Injectable()
 export class NoteService {
@@ -56,8 +57,17 @@ export class NoteService {
     return updated;
   }
 
-  remove(id: number, userId: number) {
-    const note = this.getNote(id, userId);
+  async remove(id: number, userId: number) {
+    try {
+      return await this.prismaService.note.delete({ where: { id, userId } });
+    } catch (error: unknown) {
+      if (error instanceof PrismaClientKnownRequestError) {
+        if (error.code === 'P2025') {
+          throw new ForbiddenException();
+        }
+      }
+      throw error;
+    }
   }
 
   //////////////////// Helper function //////////////////////////////////
