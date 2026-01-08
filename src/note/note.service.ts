@@ -42,6 +42,26 @@ export class NoteService {
   }
 
   async findOne(id: number, userId: number) {
+    return this.getNote(id, userId);
+  }
+
+  async update(id: number, userId: number, updateNoteDto: UpdateNoteDto) {
+    const note = await this.getNote(id, userId);
+    const updated = await this.prismaService.note.update({
+      where: {
+        id,
+      },
+      data: updateNoteDto,
+    });
+    return updated;
+  }
+
+  remove(id: number, userId: number) {
+    const note = this.getNote(id, userId);
+  }
+
+  //////////////////// Helper function //////////////////////////////////
+  async getNote(id: number, userId: number) {
     const note = await this.prismaService.note.findFirst({ where: { id } });
     if (!note) {
       throw new NotFoundException('Not Found.');
@@ -50,13 +70,5 @@ export class NoteService {
       throw new ForbiddenException('Not Allowed');
     }
     return note;
-  }
-
-  update(id: number, updateNoteDto: UpdateNoteDto) {
-    return `This action updates a #${id} note`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} note`;
   }
 }
